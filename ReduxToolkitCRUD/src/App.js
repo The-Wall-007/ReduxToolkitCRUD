@@ -1,18 +1,24 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Provider} from 'react-redux';
 
 import Home from './screens/Home';
+import store from './redux/store';
+import CreatePost from './screens/CreatePost';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Create Post" component={CreatePost} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 };
 
